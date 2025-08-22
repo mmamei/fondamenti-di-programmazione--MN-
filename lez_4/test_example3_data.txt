@@ -1,0 +1,4 @@
+game_id,player_id,position,player,team,pass_cmp,pass_att,pass_yds
+0,0,0,Marco,0,0,0,100
+0,0,0,Matteo,0,0,0,200
+0,0,0,Marco,0,0,0,250
