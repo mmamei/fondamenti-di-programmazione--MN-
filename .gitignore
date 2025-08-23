@@ -1,3 +1,5 @@
 stuff/
 *.pptx
 **secret**
+__pycache__/
+venv/
