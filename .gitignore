@@ -5,3 +5,4 @@ stuff/
 __pycache__/
 venv/
 secret/
+.ipynb_checkpoints/
