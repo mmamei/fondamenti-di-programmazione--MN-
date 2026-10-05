@@ -21,4 +21,4 @@ while ancora == 'sì':
 			print("Risultato:", risultato)
 	else:
 		print("Operazione non valida.")
-	ancora = input("Vuoi fare un'altra operazione? (sì/no): ")
+	ancora = input("Vuoi fare un'altra operazione? (sì/no): ").lower()
