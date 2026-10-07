@@ -6,8 +6,8 @@ Il corso è fortemente ispirato al libro  [Learn AI-Assisted Python Programming]
 Questa parte copre 48 ore di lezione, secodo lo schema seguente:
 
 * [Introduzione](./slides/01.%20Introduzione.pdf) (~3 ore)
-* [Introduzione a Python](./slides/02.%20Python%20Intro.pdf) (~6 ore)
-* [Leggere codice Python](./lez_3/read_python.ipynb) (~21 ore)
+* [Leggere codice Python](./lez_2/read_python.ipynb) (~21 ore)
+* [Functions and Docstrgins](./slides/03.%20Functions%20and%20Docstrings.pdf) (~6 ore)
 * [Testing e Debugging](./slides/04.%20Testing%20and%20Debugging.pdf) (~3 ore)
 * [Problem Decomposition](./slides/05.%20Problem%20Decompositon.pdf) (~3 ore)
 * [Ambienti virtuali e GIT](./slides/06.%20Virtual%20Environments%20and%20GIT.pdf) (~6 ore)
