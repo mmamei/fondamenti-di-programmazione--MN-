@@ -4,16 +4,17 @@ while True:
 	print("\n--- Gestione studenti ---")
 	print("1. Inserisci studente")
 	print("2. Cancella studente")
-	print("3. Modifica media")
+	print("3. Aggiungi voto")
 	print("4. Stampa tutto")
-	print("5. Esci")
+	print("5. Calcola media studente")
+	print("6. Esci")
 
 	scelta = input("Scegli un'operazione: ")
 
 	if scelta == "1":
 		nome = input("Nome dello studente: ").strip()
 		if nome:
-			studenti[nome] = 0
+			studenti[nome] = []
 			print(f"Studente {nome} inserito con media iniziale 0.")
 		else:
 			print("Il nome non può essere vuoto.")
@@ -32,11 +33,11 @@ while True:
 			print("Studente non trovato.")
 		else:
 			try:
-				media = float(input("Nuova media: "))
-				studenti[nome] = media
-				print(f"Media di {nome} aggiornata a {media}.")
+				voto = int(input("Nuovo Voto: "))
+				studenti[nome].append(voto)
+				print("Voto aggiunto")
 			except ValueError:
-				print("La media deve essere un numero.")
+				print("Il voto deve essere un numero.")
 
 	elif scelta == "4":
 		if studenti:
@@ -44,8 +45,19 @@ while True:
 				print(nome, media)
 		else:
 			print("Non ci sono studenti da stampare.")
+			
+	elif scelta == '5':
+		nome = input("Nome dello studente: ").strip()
+		if nome not in studenti:
+			print("Studente non trovato.")
+		else:
+			if len(studenti[nome]) == 0:
+				print('Lo Studente non ha ancora voti')
+			else:
+				print('La media è', sum(studenti[nome]) / len(studenti[nome]))
+				
 
-	elif scelta == "5":
+	elif scelta == "6":
 		print("Arrivederci!")
 		break
 
