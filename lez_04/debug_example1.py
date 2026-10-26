@@ -6,24 +6,21 @@ frequent words.
 """
 
 
+import re
+from collections import defaultdict
+
 def read_file(path="sample.txt"):
     with open(path, "r") as f:
         return f.read()
 
 def tokenize(text):
-    '''Tokenizes the input text into words.
-    remove punctuation and special characters'''
-    text = ''.join([c for c in text if c.isalnum() or c.isspace()])
     return text.split()
-    
+
 def count_words(words):
-    freq = {}
+    freq = defaultdict(int)
     for w in words:
         w = w.lower()
-        if w in freq:
-            freq[w] += 1
-        else:
-            freq[w] = 1
+        freq[w] =+ 1
     return freq
 
 def main():
