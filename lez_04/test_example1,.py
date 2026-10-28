@@ -22,4 +22,9 @@ def longest_word(words):
     return longest
 
 import doctest
-doctest.testmod(verbose=True)
+doctest.testmod(verbose=False)
+
+
+x = ["cia", "ciao", "hello"]
+y = longest_word(x)
+print(y)
