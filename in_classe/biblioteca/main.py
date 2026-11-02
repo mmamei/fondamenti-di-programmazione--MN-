@@ -1,117 +1,151 @@
-'''
-I libri vengono memorizzati da un dizionario che ha come chiave un ID del libro
-e come valori un secondo dizionario che contiene le chiavi: titolo, autore e una variabile booleana che dice se il libro è prestato in questo momento
+from datetime import datetime
 
-Gli utenti della biblioteca sono in un dizionario con chiave ID dell'utente e come valori un dizionario con nome, cognome e anno di nascita
-
-I prestiti sono memorizzati in un dizionario con chiave IdUtente-IdLibro e come valori
-la data del prestito (come stringa)
-'''
-
-libri = {}
-utenti = {}
-prestiti = {}
-
-def resetta_biblioteca():
-    global libri, utenti, prestiti
-    libri = {}
-    utenti = {}
-    prestiti = {}
-
-def aggiungi_libro(titolo, autore):
-    '''
-    Aggiunge un libro al dizionario dei libri.
-    Crea un ID progressivo univoco per il libro
-    Titolo e autore sono passati come parametri
-    Inizialmente il libro non è in prestito.
-    Restituisce l'id del libro creato.
-    '''
-    id_libro = len(libri) + 1
-    libri[id_libro] = {"titolo": titolo, "autore": autore, "prestato": False}
-    return id_libro
+import biblioteca
 
 
-def aggiungi_utente(nome, cognome, anno):
-    '''
-    Aggiunge un utente al dizionario degli utenti.
-    Crea un ID progressivo univoco per l'utente
-    Salva le informazioni nel dizionario
-    Restituisce l'ID dell'utente creato
-    '''
-    id_utente = len(utenti) + 1
-    utenti[id_utente] = {"nome": nome, "cognome": cognome, "anno": anno}
-    return id_utente
+def stampa_menu():
+    print("\n--- Biblioteca ---")
+    print("1. Aggiungi libro")
+    print("2. Aggiungi utente")
+    print("3. Cerca libro")
+    print("4. Cerca utente")
+    print("5. Presta libro")
+    print("6. Restituisci libro")
+    print("7. Lista libri")
+    print("8. Lista utenti")
+    print("9. Esci")
 
 
-def cerca_libro(titolo):
-    '''
-    Cerca i libri con titoli uguali a quello passato e restituisce una lista degli id dei titolo corrispondenti
-    '''
-    return [id for id, info in libri.items() if info["titolo"] == titolo]   
-
-def cerca_utente(nome, cognome):
-    '''
-    Cerca gli utenti con nome e cognome e ritorna la lista degli id degli utenti con quel nome e cognome
-    '''
-    return [id for id, info in utenti.items() if info["nome"] == nome and info["cognome"] == cognome]
+def leggi_intero(messaggio):
+    try:
+        return int(input(messaggio))
+    except ValueError:
+        print("Inserisci un numero intero.")
+        return None
 
 
-def presta_libro(id_utente, id_libro, data):
-    '''
-    Registra il prestito di un libro da parte di un utente.
-    Controlla che l'utente e il libro esistano e che il libro non sia già prestato.
-    Se tutto è corretto, registra il prestito nel dizionario dei prestiti e aggiorna lo stato del libro a prestato.
-    Restituisce True se il prestito è stato registrato con successo, False altrimenti.
-    '''
-    if id_utente not in utenti:
-        return False
-    if id_libro not in libri:
-        return False
-    if libri[id_libro]["prestato"]:
-        return False
-    prestiti[f"{id_utente}-{id_libro}"] = data
-    libri[id_libro]["prestato"] = True
-    return True
-
-def calcola_penale(data_prestito, data_restituzione):
-    '''
-    Calcola la penale per un prestito in base alla data di prestito e alla data di restituzione.
-    La penale è di 1 euro al giorno per ogni giorno oltre i 30 giorni dal prestito.
-    Restituisce l'importo della penale.
-    '''
-    from datetime import datetime
-    formato_data = "%Y-%m-%d"
-    data_prestito_dt = datetime.strptime(data_prestito, formato_data)
-    data_restituzione_dt = datetime.strptime(data_restituzione, formato_data)
-    giorni_trascorsi = (data_restituzione_dt - data_prestito_dt).days
-    penale = max(0, giorni_trascorsi - 30)  # 1 euro al giorno oltre i 30 giorni
-    return penale   
-
-def restituisci_libro(id_utente, id_libro):
-    '''
-    Registra la restituzione di un libro da parte di un utente.
-    Controlla che il prestito esista.
-    Se tutto è corretto, rimuove il prestito dal dizionario dei prestiti e aggiorna lo stato del libro a non prestato.
-    Restituisce True se la restituzione è stata registrata con successo, False altrimenti.
-    '''
-    key = f"{id_utente}-{id_libro}"
-    if key not in prestiti:
-        return False
-    del prestiti[key]
-    libri[id_libro]["prestato"] = False
-    return True
+def aggiungi_libro():
+    titolo = input("Titolo: ").strip()
+    autore = input("Autore: ").strip()
+    id_libro = biblioteca.aggiungi_libro(titolo, autore)
+    print(f"Libro aggiunto con ID {id_libro}.")
 
 
+def aggiungi_utente():
+    nome = input("Nome: ").strip()
+    cognome = input("Cognome: ").strip()
+    anno = leggi_intero("Anno di nascita: ")
+    if anno is None:
+        return
+    id_utente = biblioteca.aggiungi_utente(nome, cognome, anno)
+    print(f"Utente aggiunto con ID {id_utente}.")
 
-resetta_biblioteca()
 
-id = aggiungi_utente("Marco","Mamei",1976)
-print(utenti)
-print(utenti[id]['cognome'])
+def cerca_libro():
+    titolo = input("Titolo da cercare: ").strip()
+    id_libri = biblioteca.cerca_libro(titolo)
+    if not id_libri:
+        print("Nessun libro trovato.")
+        return
+    for id_libro in id_libri:
+        libro = biblioteca.libri[id_libro]
+        stato = "in prestito" if libro["prestato"] else "disponibile"
+        print(f"ID {id_libro}: {libro['titolo']} - {libro['autore']} ({stato})")
 
-id1 = aggiungi_libro("La Divina Commedia", "Dante Alighieri")
-id2 = aggiungi_libro("La Divina Commedia", "Dante Alighieri")
-id3 = aggiungi_libro("La Coscienza di Zeno", "Italo Svevo")
-print(libri)
-x = cerca_libro("La Divina Commedia")
-print(x == [id1, id2])
+
+def cerca_utente():
+    nome = input("Nome da cercare: ").strip()
+    cognome = input("Cognome da cercare: ").strip()
+    id_utenti = biblioteca.cerca_utente(nome, cognome)
+    if not id_utenti:
+        print("Nessun utente trovato.")
+        return
+    for id_utente in id_utenti:
+        utente = biblioteca.utenti[id_utente]
+        print(
+            f"ID {id_utente}: {utente['nome']} {utente['cognome']}, "
+            f"nato nel {utente['anno']}"
+        )
+
+
+def presta_libro():
+    id_utente = leggi_intero("ID utente: ")
+    id_libro = leggi_intero("ID libro: ")
+    if id_utente is None or id_libro is None:
+        return
+
+    data = input("Data del prestito (AAAA-MM-GG): ").strip()
+    try:
+        datetime.strptime(data, "%Y-%m-%d")
+    except ValueError:
+        print("Data non valida: usa il formato AAAA-MM-GG.")
+        return
+
+    if biblioteca.presta_libro(id_utente, id_libro, data):
+        print("Prestito registrato.")
+    else:
+        print("Prestito non possibile: controlla gli ID e la disponibilità del libro.")
+
+
+def restituisci_libro():
+    id_utente = leggi_intero("ID utente: ")
+    id_libro = leggi_intero("ID libro: ")
+    if id_utente is None or id_libro is None:
+        return
+
+    if biblioteca.restituisci_libro(id_utente, id_libro):
+        print("Restituzione registrata.")
+    else:
+        print("Restituzione non possibile: prestito non trovato.")
+
+
+def lista_libri():
+    if not biblioteca.libri:
+        print("Non ci sono libri in biblioteca.")
+        return
+    for id_libro, libro in biblioteca.libri.items():
+        stato = "in prestito" if libro["prestato"] else "disponibile"
+        print(f"ID {id_libro}: {libro['titolo']} - {libro['autore']} ({stato})")
+
+
+def lista_utenti():
+    if not biblioteca.utenti:
+        print("Non ci sono utenti registrati.")
+        return
+    for id_utente, utente in biblioteca.utenti.items():
+        print(
+            f"ID {id_utente}: {utente['nome']} {utente['cognome']}, "
+            f"nato nel {utente['anno']}"
+        )
+
+
+def main():
+    while True:
+        stampa_menu()
+        scelta = input("Scegli un'opzione: ").strip()
+
+        if scelta == "1":
+            aggiungi_libro()
+        elif scelta == "2":
+            aggiungi_utente()
+        elif scelta == "3":
+            cerca_libro()
+        elif scelta == "4":
+            cerca_utente()
+        elif scelta == "5":
+            presta_libro()
+        elif scelta == "6":
+            restituisci_libro()
+        elif scelta == "7":
+            lista_libri()
+        elif scelta == "8":
+            lista_utenti()
+        elif scelta == "9":
+            print("Arrivederci.")
+            break
+        else:
+            print("Scelta non valida. Inserisci un numero da 1 a 9.")
+
+
+if __name__ == "__main__":
+    main()
