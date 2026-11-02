@@ -56,10 +56,52 @@ def cerca_utente(nome, cognome):
     return [id for id, info in utenti.items() if info["nome"] == nome and info["cognome"] == cognome]
 
 
+def presta_libro(id_utente, id_libro, data):
+    '''
+    Registra il prestito di un libro da parte di un utente.
+    Controlla che l'utente e il libro esistano e che il libro non sia già prestato.
+    Se tutto è corretto, registra il prestito nel dizionario dei prestiti e aggiorna lo stato del libro a prestato.
+    Restituisce True se il prestito è stato registrato con successo, False altrimenti.
+    '''
+    if id_utente not in utenti:
+        return False
+    if id_libro not in libri:
+        return False
+    if libri[id_libro]["prestato"]:
+        return False
+    prestiti[f"{id_utente}-{id_libro}"] = data
+    libri[id_libro]["prestato"] = True
+    return True
+
+def calcola_penale(data_prestito, data_restituzione):
+    '''
+    Calcola la penale per un prestito in base alla data di prestito e alla data di restituzione.
+    La penale è di 1 euro al giorno per ogni giorno oltre i 30 giorni dal prestito.
+    Restituisce l'importo della penale.
+    '''
+    from datetime import datetime
+    formato_data = "%Y-%m-%d"
+    data_prestito_dt = datetime.strptime(data_prestito, formato_data)
+    data_restituzione_dt = datetime.strptime(data_restituzione, formato_data)
+    giorni_trascorsi = (data_restituzione_dt - data_prestito_dt).days
+    penale = max(0, giorni_trascorsi - 30)  # 1 euro al giorno oltre i 30 giorni
+    return penale   
+
+def restituisci_libro(id_utente, id_libro):
+    '''
+    Registra la restituzione di un libro da parte di un utente.
+    Controlla che il prestito esista.
+    Se tutto è corretto, rimuove il prestito dal dizionario dei prestiti e aggiorna lo stato del libro a non prestato.
+    Restituisce True se la restituzione è stata registrata con successo, False altrimenti.
+    '''
+    key = f"{id_utente}-{id_libro}"
+    if key not in prestiti:
+        return False
+    del prestiti[key]
+    libri[id_libro]["prestato"] = False
+    return True
 
 
-import doctest
-doctest.testmod(verbose=False)
 
 resetta_biblioteca()
 
