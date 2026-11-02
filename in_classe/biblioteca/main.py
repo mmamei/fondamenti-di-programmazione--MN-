@@ -93,8 +93,26 @@ def restituisci_libro():
     if id_utente is None or id_libro is None:
         return
 
+    data_restituzione = input("Data di restituzione (AAAA-MM-GG): ").strip()
+    try:
+        datetime.strptime(data_restituzione, "%Y-%m-%d")
+    except ValueError:
+        print("Data non valida: usa il formato AAAA-MM-GG.")
+        return
+
+    chiave_prestito = f"{id_utente}-{id_libro}"
+    if chiave_prestito not in biblioteca.prestiti:
+        print("Restituzione non possibile: prestito non trovato.")
+        return
+
+    data_prestito = biblioteca.prestiti[chiave_prestito]
     if biblioteca.restituisci_libro(id_utente, id_libro):
         print("Restituzione registrata.")
+        penale = biblioteca.calcola_penale(data_prestito, data_restituzione)
+        if penale:
+            print(f"Penale: {penale} euro.")
+        else:
+            print("Nessuna penale.")
     else:
         print("Restituzione non possibile: prestito non trovato.")
 
