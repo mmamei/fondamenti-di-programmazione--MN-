@@ -1,18 +1,36 @@
-
 import re
 
 EMAIL_RE = re.compile(r".+@.+\..+")
-TELEFONO_RE = re.compile(r"^\+?\d[\d\s\-]{4,}$")
+TEL_RE = re.compile(r"^\+?\d[\d\s\-]{4,}$")
 
+def valida_nome(nome: str) -> bool:
+    """
+    >>> valida_nome("Alice")
+    True
+    >>> valida_nome("   ")
+    False
+    """
+    return isinstance(nome, str) and nome.strip() != ""
 
-def valida_nome(nome):
-    # validazione debole e duplicata altrove…
-    return isinstance(nome, str) and len(nome.strip()) > 0
+def valida_telefono(tel: str) -> bool:
+    """
+    >>> valida_telefono("+39 333-555-777")
+    True
+    >>> valida_telefono("abc")
+    False
+    """
+    return bool(TEL_RE.match(str(tel)))
 
-def valida_telefono(tel):
-    m = TELEFONO_RE.match(str(tel))
-    return bool(m)
+def valida_email(email: str | None) -> bool:
+    """
+    >>> valida_email(None)
+    True
+    >>> valida_email("alice@example.com")
+    True
+    >>> valida_email("bad@")
+    False
+    """
+    return True if email is None else bool(EMAIL_RE.match(str(email)))
 
-def valida_email(email):
-    # regex permissiva, duplicata in importa_csv
-    return bool(EMAIL_RE.match(str(email)))
+import doctest
+doctest.testmod(verbose=True)
