@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quick Start - OpenFreeMap</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css" />
+	<script src="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js"></script>
+</head>
+<body>
+
+<div id="map" style="width: 1200px; height: 800px;"></div>
+<script>
+	var map = new maplibregl.Map({
+		container: 'map',
+		style: 'https://tiles.openfreemap.org/styles/liberty',
+		center: [10.871231, 44.63276],
+		zoom: 13,
+		attributionControl: {
+			compact: false,
+			customAttribution: '<a href="https://openfreemap.org/">OpenFreeMap</a> <a href="https://openmaptiles.org/">© OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>'
+		}
+	});
+
+	{{PLACEMARKS}}
+</script>
+
+</body>
+</html>
