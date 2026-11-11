@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quick Start - OpenFreeMap</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css" />
+	<script src="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js"></script>
+</head>
+<body>
+
+<div id="map" style="width: 1200px; height: 800px;"></div>
+<script>
+	var map = new maplibregl.Map({
+		container: 'map',
+		style: 'https://tiles.openfreemap.org/styles/liberty',
+		center: [10.871231, 44.63276],
+		zoom: 13,
+		attributionControl: {
+			compact: false,
+			customAttribution: '<a href="https://openfreemap.org/">OpenFreeMap</a> <a href="https://openmaptiles.org/">© OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>'
+		}
+	});
+
+	new maplibregl.Marker().setLngLat([10.871231, 44.63276]).setPopup(new maplibregl.Popup().setText('Cognento')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8789482, 44.6386748]).setPopup(new maplibregl.Popup().setText('Banca Fideuram')).addTo(map);
+new maplibregl.Marker().setLngLat([10.873562, 44.6305694]).setPopup(new maplibregl.Popup().setText('Via Umberto Tonini, 163')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6457305, 44.6993981]).setPopup(new maplibregl.Popup().setText('Tecnopolo Reggio Emilia')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6639185, 44.688982]).setPopup(new maplibregl.Popup().setText('University of Modena and Reggio Emilia - San Lazzaro Campus')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9487978, 44.6291847]).setPopup(new maplibregl.Popup().setText('Department of Engineering \"Enzo Ferrari\"')).addTo(map);
+new maplibregl.Marker().setLngLat([10.873562, 44.6305694]).setPopup(new maplibregl.Popup().setText('Via Umberto Tonini, 163')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9418571, 44.7465352]).setPopup(new maplibregl.Popup().setText('Allestimenti fieristici')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.967714, 44.641517]).setPopup(new maplibregl.Popup().setText('Opl\u00e0')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9487978, 44.6291847]).setPopup(new maplibregl.Popup().setText('Department of Engineering \"Enzo Ferrari\"')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9458338, 44.6294588]).setPopup(new maplibregl.Popup().setText('Coop I Gelsi')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9487978, 44.6291847]).setPopup(new maplibregl.Popup().setText('Department of Engineering \"Enzo Ferrari\"')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8883445, 44.6420795]).setPopup(new maplibregl.Popup().setText('Forum Guido Monzani Srl')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6639185, 44.688982]).setPopup(new maplibregl.Popup().setText('University of Modena and Reggio Emilia - San Lazzaro Campus')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9017903, 44.6398931]).setPopup(new maplibregl.Popup().setText('Pala Anderlini')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9448879, 44.6313107]).setPopup(new maplibregl.Popup().setText('Dipartimento di Matematica')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.88626, 44.63891]).setPopup(new maplibregl.Popup().setText('212 Modena Duecentododici SO UP Ristorante Bar Aperitivi')).addTo(map);
+new maplibregl.Marker().setLngLat([10.915225, 44.653872]).setPopup(new maplibregl.Popup().setText('Olimpia Restaurant')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8730926, 44.6343575]).setPopup(new maplibregl.Popup().setText('Fm Estetica')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9279268, 44.6451046]).setPopup(new maplibregl.Popup().setText('University of Modena and Reggio Emilia')).addTo(map);
+new maplibregl.Marker().setLngLat([10.873562, 44.6305694]).setPopup(new maplibregl.Popup().setText('Via Umberto Tonini, 163')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8883445, 44.6420795]).setPopup(new maplibregl.Popup().setText('Forum Guido Monzani Srl')).addTo(map);
+new maplibregl.Marker().setLngLat([10.64128, 44.69493]).setPopup(new maplibregl.Popup().setText('Piazza Tricolore, 1')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6373436, 44.6990256]).setPopup(new maplibregl.Popup().setText('Questura')).addTo(map);
+new maplibregl.Marker().setLngLat([10.64128, 44.69493]).setPopup(new maplibregl.Popup().setText('Piazza Tricolore, 1')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6639185, 44.688982]).setPopup(new maplibregl.Popup().setText('University of Modena and Reggio Emilia - San Lazzaro Campus')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.661636, 44.6826]).setPopup(new maplibregl.Popup().setText('Sali & Tabacchi')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8870355, 44.6464253]).setPopup(new maplibregl.Popup().setText('Conad')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8474278, 44.6841496]).setPopup(new maplibregl.Popup().setText('Parco Tien An Men')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8883445, 44.6420795]).setPopup(new maplibregl.Popup().setText('Forum Guido Monzani Srl')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6639185, 44.688982]).setPopup(new maplibregl.Popup().setText('University of Modena and Reggio Emilia - San Lazzaro Campus')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6675038, 44.6853544]).setPopup(new maplibregl.Popup().setText('DQuid s.r.l.')).addTo(map);
+new maplibregl.Marker().setLngLat([10.88193, 44.643823]).setPopup(new maplibregl.Popup().setText('D\'avia Bivio Aristotele')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9448879, 44.6313107]).setPopup(new maplibregl.Popup().setText('Dipartimento di Matematica')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.967714, 44.641517]).setPopup(new maplibregl.Popup().setText('Opl\u00e0')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6639185, 44.688982]).setPopup(new maplibregl.Popup().setText('University of Modena and Reggio Emilia - San Lazzaro Campus')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6527203, 44.6789277]).setPopup(new maplibregl.Popup().setText('Fit Village')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6639185, 44.688982]).setPopup(new maplibregl.Popup().setText('University of Modena and Reggio Emilia - San Lazzaro Campus')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.873562, 44.6305694]).setPopup(new maplibregl.Popup().setText('Via Umberto Tonini, 163')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9301022, 44.7312655]).setPopup(new maplibregl.Popup().setText('Martinelli Rossano')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701677, 44.6291733]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.871231, 44.63276]).setPopup(new maplibregl.Popup().setText('Cognento')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9314014, 44.6439218]).setPopup(new maplibregl.Popup().setText('Teatro Storchi')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9263067, 44.6471728]).setPopup(new maplibregl.Popup().setText('Feltrinelli Bookstores')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9279268, 44.6451046]).setPopup(new maplibregl.Popup().setText('University of Modena and Reggio Emilia')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8883445, 44.6420795]).setPopup(new maplibregl.Popup().setText('Forum Guido Monzani Srl')).addTo(map);
+new maplibregl.Marker().setLngLat([10.873562, 44.6305694]).setPopup(new maplibregl.Popup().setText('Via Umberto Tonini, 163')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8883445, 44.6420795]).setPopup(new maplibregl.Popup().setText('Forum Guido Monzani Srl')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6639185, 44.688982]).setPopup(new maplibregl.Popup().setText('University of Modena and Reggio Emilia - San Lazzaro Campus')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8883445, 44.6420795]).setPopup(new maplibregl.Popup().setText('Forum Guido Monzani Srl')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.873562, 44.6305694]).setPopup(new maplibregl.Popup().setText('Via Umberto Tonini, 163')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9253694, 44.6476215]).setPopup(new maplibregl.Popup().setText('OFFICINA Della SENAPE')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8712834, 44.6331118]).setPopup(new maplibregl.Popup().setText('Margherita Conad')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8717114, 44.6358925]).setPopup(new maplibregl.Popup().setText('Edicola di Cognento')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.93141, 44.7311]).setPopup(new maplibregl.Popup().setText('Via Stradello Arginetto, 89')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6639185, 44.688982]).setPopup(new maplibregl.Popup().setText('University of Modena and Reggio Emilia - San Lazzaro Campus')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6527203, 44.6789277]).setPopup(new maplibregl.Popup().setText('Fit Village')).addTo(map);
+new maplibregl.Marker().setLngLat([10.6639185, 44.688982]).setPopup(new maplibregl.Popup().setText('University of Modena and Reggio Emilia - San Lazzaro Campus')).addTo(map);
+new maplibregl.Marker().setLngLat([10.7739622, 44.6536632]).setPopup(new maplibregl.Popup().setText('Coop - Coop Alleanza 3.0')).addTo(map);
+new maplibregl.Marker().setLngLat([10.774506, 44.6539539]).setPopup(new maplibregl.Popup().setText('Crudo')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9487978, 44.6291847]).setPopup(new maplibregl.Popup().setText('Department of Engineering \"Enzo Ferrari\"')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8883445, 44.6420795]).setPopup(new maplibregl.Popup().setText('Forum Guido Monzani Srl')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9448879, 44.6313107]).setPopup(new maplibregl.Popup().setText('Dipartimento di Matematica')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9289201, 44.6434268]).setPopup(new maplibregl.Popup().setText('Mr. Brown')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9221056, 44.6442884]).setPopup(new maplibregl.Popup().setText('Churrasco')).addTo(map);
+new maplibregl.Marker().setLngLat([10.9245806, 44.6487894]).setPopup(new maplibregl.Popup().setText('Juta Caf\u00e8')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8816439, 44.645296]).setPopup(new maplibregl.Popup().setText('Parcheggio Fanclub ModenaPark')).addTo(map);
+new maplibregl.Marker().setLngLat([10.8701544, 44.6291695]).setPopup(new maplibregl.Popup().setText('Via Giovanni Guareschi, 154')).addTo(map);
+</script>
+
+</body>
+</html>

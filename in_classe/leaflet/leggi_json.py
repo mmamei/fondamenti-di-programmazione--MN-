@@ -26,11 +26,24 @@ for elemento in dati["timelineObjects"]:
         )
 
 codice_marker = "\n".join(
-   "new maplibregl.Marker().setLngLat"
-   f"([{luogo['longitudine']}, {luogo['latitudine']}])"
-   ".setPopup(new maplibregl.Popup().setText"
-   f"({stringa_js(luogo['nome'])})).addTo(map);"
-   for luogo in luoghi_visitati
+    "new maplibregl.Marker().setLngLat"
+    f"([{luogo['longitudine']}, {luogo['latitudine']}])"
+    ".setPopup(new maplibregl.Popup().setText"
+    f"({stringa_js(luogo['nome'])})).addTo(map);"
+    for luogo in luoghi_visitati
 )
 
-print(codice_marker)
+cartella = Path(__file__).parent
+file_template = cartella / "leaflet.tmpl"
+file_output = cartella / "output.html"
+
+template = file_template.read_text(encoding="utf-8")
+segnaposto = "{{PLACEMARKS}}"
+
+if template.count(segnaposto) != 1:
+    raise ValueError(f"Il template deve contenere un solo segnaposto {segnaposto}")
+
+file_output.write_text(
+    template.replace(segnaposto, codice_marker),
+    encoding="utf-8",
+)
