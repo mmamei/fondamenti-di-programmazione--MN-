@@ -13,7 +13,9 @@
 <script>
 
 	var map = L.map('mapid').setView([44.63276,10.871231], 13);
-	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map);
 	L.marker([44.63276, 10.871231]).addTo(map).bindPopup("Cognento")
     L.marker([44.83276, 10.871231]).addTo(map).bindPopup("Cognento2")
 </script>
