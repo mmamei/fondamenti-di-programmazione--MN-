@@ -2,22 +2,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Quick Start - Leaflet</title>
+	<title>Quick Start - OpenFreeMap</title>
 	<meta charset="utf-8" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"/>
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css" />
+	<script src="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js"></script>
 </head>
 <body>
 
-<div id="mapid" style="width: 1200px; height: 800px;"></div>
+<div id="map" style="width: 1200px; height: 800px;"></div>
 <script>
+	var map = new maplibregl.Map({
+		container: 'map',
+		style: 'https://tiles.openfreemap.org/styles/liberty',
+		center: [10.871231, 44.63276],
+		zoom: 13,
+		attributionControl: {
+			compact: false,
+			customAttribution: '<a href="https://openfreemap.org/">OpenFreeMap</a> <a href="https://openmaptiles.org/">© OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>'
+		}
+	});
 
-	var map = L.map('mapid').setView([44.63276,10.871231], 13);
-	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-	}).addTo(map);
-	L.marker([44.63276, 10.871231]).addTo(map).bindPopup("Cognento")
-    L.marker([44.83276, 10.871231]).addTo(map).bindPopup("Cognento2")
+	new maplibregl.Marker()
+		.setLngLat([10.871231, 44.63276])
+		.setPopup(new maplibregl.Popup().setText('Cognento'))
+		.addTo(map);
+	new maplibregl.Marker()
+		.setLngLat([10.871231, 44.83276])
+		.setPopup(new maplibregl.Popup().setText('Cognento2'))
+		.addTo(map);
 </script>
 
 </body>
