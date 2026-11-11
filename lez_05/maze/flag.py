@@ -1,6 +1,6 @@
 import pygame
 from constants import *
-flag_image = pygame.image.load('lez_6/maze/images/flag.png')
+flag_image = pygame.image.load('lez_05/maze/images/flag.png')
 
 def create_flag():
     tmp_image = pygame.transform.scale(flag_image, (WALL_DX,WALL_DY))

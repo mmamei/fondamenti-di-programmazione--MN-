@@ -1,24 +1,29 @@
+import re
+
 import requests
-from constants import WALL_DX,WALL_DY,N_COLS,N_ROWS
+from constants import WALL_DX, WALL_DY, N_COLS, N_ROWS
 from wall import create_wall
 
 
 def create_maze():
-    '''
-    Create a maze using a web service.
-    This function sends a request to a maze generation service and processes the response.
-    It produces a list of wall objects, to be displayed in the game
-    '''
+    """Create wall objects from the maze returned by the web service."""
     wall_list = []
-    maze = requests.post('http://www.delorie.com/game-room/mazes/genmaze.cgi',
-                          data={'cols': N_COLS, 'rows': N_ROWS, 'type': 'text'})
+    response = requests.post(
+        'https://www.delorie.com/game-room/mazes/genmaze.cgi',
+        data={'cols': N_COLS, 'rows': N_ROWS, 'type': 'text'},
+        timeout=10,
+    )
+    response.raise_for_status()
+    match = re.search(r'<pre>\s*(.*?)\s*</pre>', response.text, re.DOTALL)
+    if match is None:
+        raise ValueError("Maze service response did not contain maze data.")
+
     y = 0
-    for l in maze.text.splitlines():
-        if not l.startswith('<'):
-            x = 0
-            for c in l:
-                if c != ' ':
-                    wall_list.append(create_wall(x, y, WALL_DX, WALL_DY))
-                x += WALL_DX
-            y += WALL_DY
+    for line in match.group(1).splitlines():
+        x = 0
+        for character in line:
+            if character != ' ':
+                wall_list.append(create_wall(x, y, WALL_DX, WALL_DY))
+            x += WALL_DX
+        y += WALL_DY
     return wall_list

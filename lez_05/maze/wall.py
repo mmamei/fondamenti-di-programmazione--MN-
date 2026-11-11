@@ -1,6 +1,6 @@
 import pygame
 
-wall_image = pygame.image.load('lez_6/maze/images/wall.png')
+wall_image = pygame.image.load('lez_05/maze/images/wall.png')
 
 def create_wall(x, y, dx, dy):
     tmp_image = pygame.transform.scale(wall_image, (dx,dy))

@@ -3,7 +3,7 @@ from pygame.locals import *
 from constants import *
 
 
-player_image = pygame.image.load('lez_6/maze/images/tank1.png')
+player_image = pygame.image.load('lez_05/maze/images/tank1.png')
 player_image = pygame.transform.scale(player_image, (WALL_DX*0.8,WALL_DY*0.8))
 
 def create_player():
