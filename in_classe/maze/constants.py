@@ -1,0 +1,16 @@
+
+import pygame
+
+WALL_DX = 30
+WALL_DY = 30
+
+N_ROWS = 15
+N_COLS = 15
+
+
+
+SCREEN_WIDTH = (3 * N_COLS + 1) * WALL_DX
+SCREEN_HEIGHT = (2 * N_ROWS + 1) * WALL_DY
+
+
+ADDENEMY = pygame.USEREVENT + 1
