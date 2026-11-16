@@ -1,7 +1,6 @@
 import pygame
 from pygame.locals import *
 from constants import *
-from missile import create_missile
 
 
 player_image = pygame.image.load('lez_05/maze/images/tank1.png')
@@ -54,4 +53,4 @@ def update_player(player, pressed_keys, wall_list, flag):
     return False
 
 def fire_player(player):
-    return create_missile(player)
+    print('fire')

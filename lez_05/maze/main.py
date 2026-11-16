@@ -3,7 +3,6 @@ from pygame.locals import *
 import random
 from pygame import font
 from constants import *
-from missile import update_missile
 from player import *
 from wall import create_wall
 from flag import create_flag
@@ -18,7 +17,6 @@ gameon = False # If this is True the actual game is running. If it is flase, we 
 
 
 wall_list = []
-missile_list = []
 
 clock = pygame.time.Clock()
 pygame.time.set_timer(ADDENEMY, 5000)
@@ -33,8 +31,7 @@ while running:
             if event.key == K_1:
                 gameon = True
             if event.key == K_SPACE and gameon:
-                missile = fire_player(player)
-                missile_list.append(missile)
+                fire_player(player)
         elif event.type == QUIT:
             running = False
     screen.fill([0, 0, 0])
@@ -47,16 +44,12 @@ while running:
             wall_list = create_maze()
     if gameon:
         win = update_player(player, pygame.key.get_pressed(), wall_list, flag)
-        for missile in missile_list:
-            update_missile(missile, wall_list, flag)
 
         # draw elements
         for wall in wall_list:
             screen.blit(wall["surf"], wall["rect"])
         screen.blit(player["surf"], player["rect"])
         screen.blit(flag["surf"], flag["rect"])
-        for missile in missile_list:
-            screen.blit(missile["surf"], missile["rect"])
 
         if win:
             gameon = False
